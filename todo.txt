@@ -1,0 +1,1 @@
+- Prevent mods with many different non stackable items (Iron Spells *cough* *cough*) from hogging all the space in the chests at high luck levels

@@ -1,0 +1,149 @@
+
+/*
+    @SubscribeEvent
+    public static void onRightclick(
+            net.neoforged.neoforge.event.entity.player.PlayerInteractEvent.RightClickBlock event) {
+        // check if chest
+        if (event.getLevel() instanceof ServerLevel serverLevel) {
+            BlockPos pos = event.getPos();
+
+            // check if chest is empty
+            BlockEntity blockEntity = serverLevel.getBlockEntity(pos);
+            if (blockEntity instanceof RandomizableContainerBlockEntity chestEntity) {
+                System.out.println("Found a chest that !");
+                // Get the chest's inventory
+                Container inventory = chestEntity;
+
+                RandomizableContainerBlockEntity cib = (RandomizableContainerBlockEntity) blockEntity;
+
+                ResourceKey<LootTable> lt = cib.getLootTable();
+
+                System.out.println("Loot table: " + lt);
+
+                if (lt != null) {
+                    // Get the luck level
+                    float luckLevel = 0.0f;
+
+                    if (event.getEntity() instanceof ServerPlayer) {
+                        luckLevel = ((ServerPlayer) event.getEntity()).getLuck() - 1.00f;
+                    }
+
+                    System.out.println("Luck level: " + luckLevel);
+
+                    if (luckLevel <= 0) {
+                        return;
+                    }
+
+                    // Force generate loot
+                    inventory.getItem(0);
+
+                    // gen additional loots
+                    List<ItemStack> loot = new ObjectArrayList<>();
+                    int i = 0;
+                    while (i < luckLevel) {
+                        i++;
+                        // pick a random item from the loot table
+                        ItemStack item = unpackLootTable(event.getEntity(),
+                                (RandomizableContainerBlockEntity) blockEntity, lt);
+                        if (item != null && !item.isEmpty()) {
+                            loot.add(item);
+                        }
+                    }
+
+                    event.getEntity().level().getServer().tell(new net.minecraft.server.TickTask(0, () -> {
+                        // add loot to the chest
+                        for (ItemStack item : loot) {
+                            // pick a random item from the loot table
+                            if (item != null && !item.isEmpty()) {
+                                // add item to the chest
+                                for (int j = 0; j < inventory.getContainerSize(); j++) {
+                                    ItemStack currentItem = inventory.getItem(j);
+                                    if (currentItem.isEmpty()) {
+                                        System.out.println("Empty slot at " + j + ".Adding item to chest: "
+                                                + item.getDisplayName().getString());
+                                        inventory.setItem(j, item);
+                                        break;
+                                    } else if (currentItem.getItem() == item.getItem()
+                                            && currentItem.getCount() < currentItem.getMaxStackSize()) {
+                                        System.out.println(
+                                                "Found item in chest: " + currentItem.getDisplayName().getString());
+                                        int countToAdd = Math.min(item.getCount(),
+                                                currentItem.getMaxStackSize() - currentItem.getCount());
+                                        currentItem.grow(countToAdd);
+                                        item.shrink(countToAdd);
+                                        break;
+                                    }
+                                }
+                            } else {
+                                System.out.println("No item found in loot table");
+                            }
+                        }
+                    }));
+                }
+            }
+
+        }
+    }
+    
+    static ItemStack unpackLootTable(Player player, RandomizableContainerBlockEntity block,
+            ResourceKey lootTable) {
+        Level level = player.level();
+        BlockPos blockpos = block.getBlockPos();
+
+        if (lootTable != null && level != null && level.getServer() != null) {
+            System.out.println("HMM LE CACA C EST DELICEUX");
+
+            LootTable loottable = level.getServer().reloadableRegistries().getLootTable(lootTable);
+            if (player instanceof ServerPlayer) {
+                CriteriaTriggers.GENERATE_LOOT.trigger((ServerPlayer) player, lootTable);
+            }
+
+            // block.setLootTable((ResourceKey)null);
+
+            LootParams.Builder lootparams$builder = (new LootParams.Builder((ServerLevel) level))
+                    .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(blockpos));
+            if (player != null) {
+                lootparams$builder.withLuck(player.getLuck()).withParameter(LootContextParams.THIS_ENTITY, player);
+            }
+
+            ArrayList<ItemStack> currentInventory = new ArrayList<>(block.getContainerSize());
+            for (int i = 0; i < block.getContainerSize(); i++) {
+                ItemStack item = block.getItem(i);
+                currentInventory.add(item);
+                block.setItem(i, ItemStack.EMPTY);
+            }
+
+            loottable.fill(block, lootparams$builder.create(LootContextParamSets.CHEST), block.getLootTableSeed());
+
+            // pick a random item from block
+            List<ItemStack> items = new ArrayList<>();
+            for (int i = 0; i < block.getContainerSize(); i++) {
+                ItemStack item = block.getItem(i);
+                if (item != null && !item.isEmpty()) {
+                    items.add(item);
+                }
+            }
+
+            // restore the chest
+            for (int i = 0; i < block.getContainerSize(); i++) {
+                ItemStack item = currentInventory.get(i);
+                block.setItem(i, item);
+            }
+
+            // if list empty, return
+            if (items.isEmpty()) {
+                return ItemStack.EMPTY;
+            }
+
+            // pick a random item from the list
+            int randomIndex = RANDOM.nextInt(items.size());
+            ItemStack randomItem = items.get(randomIndex);
+
+            System.out.println("Random item: " + randomItem.getDisplayName().getString());
+
+            return randomItem;
+        }
+
+        return ItemStack.EMPTY;
+    }
+*/
