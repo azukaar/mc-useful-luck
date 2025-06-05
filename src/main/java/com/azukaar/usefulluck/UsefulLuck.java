@@ -12,7 +12,9 @@ import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -57,6 +59,8 @@ public class UsefulLuck
         // Register the loot conditions
         LOOT_CONDITIONS.register(modEventBus);
 
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ULModConfig.serverSpec);
+        
         // Register ourselves for server and other game events we are interested in.
         MinecraftForge.EVENT_BUS.register(this);
     }

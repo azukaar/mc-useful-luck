@@ -3,6 +3,7 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
 version = mod_version
@@ -120,6 +121,7 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+    maven {  url = "https://repo.spongepowered.org/maven" } // mixin
 }
 
 dependencies {
@@ -144,6 +146,14 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    implementation 'org.spongepowered:mixin:0.8.5'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+mixin {
+    add sourceSets.main, "usefulluck.refmap.json"
+    config "usefulluck.mixins.json"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

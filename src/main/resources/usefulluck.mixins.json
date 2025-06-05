@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.azukaar.usefulluck.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "usefulluck.refmap.json",
+  "minVersion": "0.8",
+  "mixins": [
+    "LootItemMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
