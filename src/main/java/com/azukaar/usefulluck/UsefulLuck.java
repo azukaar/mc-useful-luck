@@ -10,6 +10,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -50,6 +51,8 @@ public class UsefulLuck
 
         // Register the loot conditions
         LOOT_CONDITIONS.register(modEventBus);
+        
+        modContainer.registerConfig(ModConfig.Type.SERVER, ULModConfig.serverSpec);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (UsefulLuck) to respond directly to events.
