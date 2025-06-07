@@ -210,6 +210,14 @@ public class LuckLootModifier extends LootModifier {
             // to avoid removing the original loot
             mergeLoot(result, generatedLoot);
 
+            // ensure we don't return more items than max item stack for each item
+            for (int idx = 0; idx < result.size(); idx++) {
+                ItemStack item = result.get(idx);
+                if (item.getCount() > item.getMaxStackSize()) {
+                    item.setCount(item.getMaxStackSize());
+                }
+            }
+            
             return result;
         }
 
