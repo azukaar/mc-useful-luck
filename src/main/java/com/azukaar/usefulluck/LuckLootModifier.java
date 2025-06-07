@@ -21,6 +21,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -218,6 +219,14 @@ public class LuckLootModifier extends LootModifier {
             // to avoid removing the original loot
             mergeLoot(result, generatedLoot);
 
+            // ensure we don't return more items than max item stack for each item
+            for (int idx = 0; idx < result.size(); idx++) {
+                ItemStack item = result.get(idx);
+                if (item.getCount() > item.getMaxStackSize()) {
+                    item.setCount(item.getMaxStackSize());
+                }
+            }
+
             return result;
         }
 
@@ -404,6 +413,8 @@ public class LuckLootModifier extends LootModifier {
 
         @Override
         public void setItem(int arg0, ItemStack arg1) {
+            arg1.setCount(Mth.clamp(arg1.getCount(), 0, arg1.getMaxStackSize()));
+            
             if (arg0 >= items.size()) {
                 items.add(arg1);
             } else {
