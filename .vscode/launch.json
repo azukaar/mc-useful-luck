@@ -6,17 +6,17 @@
       "request": "launch",
       "name": "Client",
       "presentation": {
-        "group": "Mod Development - 1.21.1",
+        "group": "Mod Development - mc-useful-luck",
         "order": 0
       },
-      "projectName": "1.21.1",
+      "projectName": "mc-useful-luck",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@E:\\work\\Useful Luck\\1.21.1\\build\\moddev\\clientRunProgramArgs.txt"
+        "@E:\\work\\mc-useful-luck\\build\\moddev\\clientRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@E:\\work\\Useful Luck\\1.21.1\\build\\moddev\\clientRunVmArgs.txt",
-        "-Dfml.modFolders\u003dusefulluck%%E:\\work\\Useful Luck\\1.21.1\\bin\\main"
+        "@E:\\work\\mc-useful-luck\\build\\moddev\\clientRunVmArgs.txt",
+        "-Dfml.modFolders\u003dusefulluck%%E:\\work\\mc-useful-luck\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
       "env": {},
@@ -28,17 +28,17 @@
       "request": "launch",
       "name": "Data",
       "presentation": {
-        "group": "Mod Development - 1.21.1",
+        "group": "Mod Development - mc-useful-luck",
         "order": 1
       },
-      "projectName": "1.21.1",
+      "projectName": "mc-useful-luck",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@E:\\work\\Useful Luck\\1.21.1\\build\\moddev\\dataRunProgramArgs.txt"
+        "@E:\\work\\mc-useful-luck\\build\\moddev\\dataRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@E:\\work\\Useful Luck\\1.21.1\\build\\moddev\\dataRunVmArgs.txt",
-        "-Dfml.modFolders\u003dusefulluck%%E:\\work\\Useful Luck\\1.21.1\\bin\\main"
+        "@E:\\work\\mc-useful-luck\\build\\moddev\\dataRunVmArgs.txt",
+        "-Dfml.modFolders\u003dusefulluck%%E:\\work\\mc-useful-luck\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
       "env": {},
@@ -50,17 +50,17 @@
       "request": "launch",
       "name": "GameTestServer",
       "presentation": {
-        "group": "Mod Development - 1.21.1",
+        "group": "Mod Development - mc-useful-luck",
         "order": 2
       },
-      "projectName": "1.21.1",
+      "projectName": "mc-useful-luck",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@E:\\work\\Useful Luck\\1.21.1\\build\\moddev\\gameTestServerRunProgramArgs.txt"
+        "@E:\\work\\mc-useful-luck\\build\\moddev\\gameTestServerRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@E:\\work\\Useful Luck\\1.21.1\\build\\moddev\\gameTestServerRunVmArgs.txt",
-        "-Dfml.modFolders\u003dusefulluck%%E:\\work\\Useful Luck\\1.21.1\\bin\\main"
+        "@E:\\work\\mc-useful-luck\\build\\moddev\\gameTestServerRunVmArgs.txt",
+        "-Dfml.modFolders\u003dusefulluck%%E:\\work\\mc-useful-luck\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
       "env": {},
@@ -72,17 +72,17 @@
       "request": "launch",
       "name": "Server",
       "presentation": {
-        "group": "Mod Development - 1.21.1",
+        "group": "Mod Development - mc-useful-luck",
         "order": 3
       },
-      "projectName": "1.21.1",
+      "projectName": "mc-useful-luck",
       "mainClass": "net.neoforged.devlaunch.Main",
       "args": [
-        "@E:\\work\\Useful Luck\\1.21.1\\build\\moddev\\serverRunProgramArgs.txt"
+        "@E:\\work\\mc-useful-luck\\build\\moddev\\serverRunProgramArgs.txt"
       ],
       "vmArgs": [
-        "@E:\\work\\Useful Luck\\1.21.1\\build\\moddev\\serverRunVmArgs.txt",
-        "-Dfml.modFolders\u003dusefulluck%%E:\\work\\Useful Luck\\1.21.1\\bin\\main"
+        "@E:\\work\\mc-useful-luck\\build\\moddev\\serverRunVmArgs.txt",
+        "-Dfml.modFolders\u003dusefulluck%%E:\\work\\mc-useful-luck\\bin\\main"
       ],
       "cwd": "${workspaceFolder}\\run",
       "env": {},
