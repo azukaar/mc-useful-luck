@@ -33,6 +33,10 @@ public class LootTableMatchCondition implements LootItemCondition {
     @Override
     public boolean test(LootContext lootContext) {
         ResourceLocation lootTableId = lootContext.getQueriedLootTableId();
+        if (lootTableId == null) {
+            UsefulLuck.LOGGER.debug("No loot table ID found in context, condition cannot match");
+            return false;
+        }
         boolean matches = pattern.matcher(lootTableId.toString()).matches();
         UsefulLuck.LOGGER.debug("Testing loot table " + lootTableId + " against pattern " + 
                            pattern.pattern() + ": " + matches);

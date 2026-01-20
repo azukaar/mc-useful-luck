@@ -13,7 +13,6 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
@@ -88,6 +87,10 @@ public class LuckLootModifier extends LootModifier {
 
         // Try to get the loottable that was used to generate the loot.
         ResourceLocation lootTableLoc = context.getQueriedLootTableId();
+        if (lootTableLoc == null) {
+            UsefulLuck.LOGGER.debug("No loot table ID found in context, skipping luck bonus");
+            return generatedLoot;
+        }
         ResourceKey lootTable = ResourceKey.create(Registries.LOOT_TABLE, lootTableLoc);
         UsefulLuck.LOGGER.debug("Loot table: " + lootTable);
 
@@ -120,7 +123,7 @@ public class LuckLootModifier extends LootModifier {
                 List<ItemStack> items = unpackLootTable(lootTable, context, maxI);
 
                 if (items != null && !items.isEmpty()) {
-                    UsefulLuck.LOGGER.debug("Adding items: " + items.toString());
+                    //UsefulLuck.LOGGER.debug("Adding items: " + items.toString());
 
                     mergeLoot(result, items);
                 }
@@ -181,9 +184,8 @@ public class LuckLootModifier extends LootModifier {
                         float removalProbability = baseProbability * (indices.size() - 1);
                         removalProbability = Math.min(removalProbability, 0.95f); // Cap at 95%
 
-                        UsefulLuck.LOGGER.debug("Item " + entry.getKey() + " has " + indices.size() +
-                                " duplicates, removal probability: " + removalProbability);
-
+                        //UsefulLuck.LOGGER.debug("Item " + entry.getKey() + " has " + indices.size() +
+                        //        " duplicates, removal probability: " + removalProbability);
 
                         // Determine which duplicates to remove (probabilistic)
                         for (int j = 0; j < indices.size() - 1; j++) { // Keep at least one
