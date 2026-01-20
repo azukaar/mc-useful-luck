@@ -111,7 +111,7 @@ public class LuckLootModifier extends LootModifier {
                 List<ItemStack> items = unpackLootTable(lootTableLoc, context, maxI);
 
                 if (items != null && !items.isEmpty()) {
-                    UsefulLuck.LOGGER.debug("Adding items: " + items.toString());
+                    //UsefulLuck.LOGGER.debug("Adding items: " + items.toString());
 
                     mergeLoot(result, items);
                 }
@@ -172,8 +172,8 @@ public class LuckLootModifier extends LootModifier {
                         float removalProbability = baseProbability * (indices.size() - 1);
                         removalProbability = Math.min(removalProbability, 0.95f); // Cap at 95%
 
-                        UsefulLuck.LOGGER.debug("Item " + entry.getKey() + " has " + indices.size() +
-                                " duplicates, removal probability: " + removalProbability);
+                        //UsefulLuck.LOGGER.debug("Item " + entry.getKey() + " has " + indices.size() +
+                        //        " duplicates, removal probability: " + removalProbability);
 
 
                         // Determine which duplicates to remove (probabilistic)
